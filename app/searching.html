@@ -14,8 +14,6 @@
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/reviews.css">
-
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="../bower_components/modernizr/modernizr.js"></script>
@@ -30,7 +28,6 @@
 
         <header>
 
-
                 
             <div class="container">
                 
@@ -43,7 +40,7 @@
                         <li><a href="#">Home</a></li>
                         <li><a href="">Reviews</a></li>
                         <li><a href="detail.html">Results</a></li>
-                        <li><a href="searching.html">Searches</a></li>
+                        <li><a href="searching.html">Searching</a></li>
                         <li><a href="">Contact</a></li>
                     </ul>
 
@@ -51,8 +48,6 @@
 
 
             </div><!--end container-->
-
-
 
 
 
@@ -70,40 +65,21 @@
 
             <div class="container">
             
-            <h4>The Exploratory Committee connects lovers of the great outdoors with neat things to and a community to share their experiences with. Simply choose how you want to discover your next adventure below to get started!</h4>
+            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, est, atque, ullam hic minus dolorem suscipit natus qui consectetur numquam fugit quia assumenda nemo aperiam porro totam exercitationem ut tempore.</h4>
 
 
             <div class="row">
                 
-                <div class="col-md-6 mapsoption">
+                <div class="col-md-6">
                     
-                    <h5>Nearby Spots</h5>
-
-                    <img src="/../imgs/maps.png" alt="" width="200">
+                    <p>Map</p>
 
                 </div><!--end col-->
 
-                <div class="col-md-6 typeoption">
+                <div class="col-md-6">
                     
             
-                <h5>What's your style?</h5>
-
-                    <div class="typeslots">
-
-
-
-                       <a href="#"> <img src="/../imgs/hiking.png" alt="" </a>
-                       <a href="#"> <img src="/../imgs/boating.png" alt="" ></a>
-                        <a href="#"><img src="/../imgs/camping.png" alt="" ></a>
-                        <a href="#"><img src="/../imgs/fishing.png" alt="" ></a>
-                        <a href="#"><img src="/../imgs/picnicing.png" alt="" ></a>
-                        <a href="#"><img src="/../imgs/sightseeing.png" alt=""></a>
-
-                        
-
-
-                    </div><!--end type slots-->
-
+                <p>Type</p>
 
                 </div><!--end col-->
 
@@ -117,6 +93,17 @@
         <div class="adventurebox">
             
             <h4>Your Adventure</h4>
+
+            <section id="wrapper">
+                    <header>
+                      <h1>geolocation</h1>
+                    </header>
+                <meta name="viewport" content="width=620" />
+                <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+                    <article>
+                      <p>Finding your location: <span id="status">checking...</span></p>
+                    </article>
+        </section>
 
         </div><!--end adventure box-->
 
@@ -159,7 +146,7 @@
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
         <script src="scripts/search.js"></script>
-        <script src="scripts/reviews.js"></script>
+        <!-- <script src="scripts/reviews.js"></script> -->
         <script src="scripts/footer.js"></script>
 
         <!-- endbuild -->
