@@ -181,6 +181,26 @@ header nav ul li a:hover{
     background-color: #65A832;
 }
 
+.typeslots{
+    width: 300px;
+    margin: 30px auto 0 auto !important;
+}
+
+.typeslots img{
+    width: 75px;
+    margin: 3px !important;
+}
+
+.typeslots a{
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+}
+
+.typeslots a:hover{
+    background-color: white;
+}
+
 .adventurebox h4{
     text-align: center;
     padding: 50px 0 50px 0 !important;
