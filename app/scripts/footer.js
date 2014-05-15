@@ -3,7 +3,6 @@ var aboutData= [
 		photo:"https://s3.amazonaws.com/uploads.hipchat.com/31349/751955/W67YG2LeMysO5MU/brooke-casey-pic.jpg",
 		name:"Brooke Casey",
 	
-
 	},
 	{
 		photo:"https://s3.amazonaws.com/uploads.hipchat.com/31349/751945/FgDbKrWpLiXS4mS/me.png",
