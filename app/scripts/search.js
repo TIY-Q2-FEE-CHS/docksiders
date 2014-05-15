@@ -2,7 +2,51 @@
 
 $(document).ready(function() {
 
-  placesData.init();
+  // placesData.init();
+  
+  var map;
+  var infowindow;
+
+  function initialize() {
+    var charleston = new google.maps.LatLng(32.7745350, -79.928430);
+
+    map = new google.maps.Map(document.getElementById('map-canvas'), {
+      center: charleston,
+      zoom: 15
+    });
+
+    var request = {
+      location: charleston,
+      radius: 500,
+      types: ['park']
+    };
+    infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
+}
+
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      createMarker(results[i]);
+    }
+  }
+}
+
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
 
 });
 
@@ -58,137 +102,6 @@ findPlaces: function (event){
       }
     });
 }
-
-}
-
-// findPlaces: function (){
-
-	// $.ajax({
- //      url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=50&types=park&name=park&sensor=false&key=AIzaSyBVsHwZR7Gk2n4EBh0ZAvg2yDbRmMsza3g",
- //      type: "GET",
- //      dataType: "json",
- //      error: function(jqXHR, status, error) {
- //        alert("Something is Wrong" + error);
- //      },
- //      success: function(data, dataType, jqXHR) {
- //        console.log("success");
-
- //      }
- //    });
-// },
-
-// locateYou: function(){
-	
-//                 function success(position) {
-//                       var s = document.querySelector('#status');
-                      
-//                       if (s.className == 'success') {
-                          
-//                         return;
-//                       }
-                      
-//                       s.innerHTML = "found you!";
-//                       s.className = 'success';
-                      
-//                       var mapcanvas = document.createElement('div');
-//                       mapcanvas.id = 'mapcanvas';
-//                       mapcanvas.style.height = '400px';
-//                       mapcanvas.style.width = '560px';
-                        
-//                       document.querySelector('article').appendChild(mapcanvas);
-                      
-//                       var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-//                       var myOptions = {
-//                         zoom: 15,
-//                         center: latlng,
-//                         mapTypeControl: false,
-//                         navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-//                         mapTypeId: google.maps.MapTypeId.ROADMAP
-//                       };
-//                       var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
-                      
-//                       var marker = new google.maps.Marker({
-//                           position: latlng, 
-//                           map: map, 
-//                           title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
-//                       });
-//                 }
-
-//                 function error(msg) {
-//                   var s = document.querySelector('#status');
-//                   s.innerHTML = typeof msg == 'string' ? msg : "failed";
-//                   s.className = 'fail';
-                  
-//                 }
-
-//                 if (navigator.geolocation) {
-//                   navigator.geolocation.getCurrentPosition(success, error);
-//                 } else {
-//                   error('not supported');
-//                 }
-              
-// }
-
-// }
-
-  	
-//   }
-
-// }
-
-
-
-// locateYou: function(){
-	
-//                 function success(position) {
-//                       var s = document.querySelector('#status');
-                      
-//                       if (s.className == 'success') {
-//                         // not sure why we're hitting this twice in FF, I think it's to do with a cached result coming back    
-//                         return;
-//                       }
-                      
-//                       s.innerHTML = "found you!";
-//                       s.className = 'success';
-                      
-//                       var mapcanvas = document.createElement('div');
-//                       mapcanvas.id = 'mapcanvas';
-//                       mapcanvas.style.height = '400px';
-//                       mapcanvas.style.width = '560px';
-                        
-//                       document.querySelector('article').appendChild(mapcanvas);
-                      
-//                       var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-//                       var myOptions = {
-//                         zoom: 15,
-//                         center: latlng,
-//                         mapTypeControl: false,
-//                         navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-//                         mapTypeId: google.maps.MapTypeId.ROADMAP
-//                       };
-//                       var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
-                      
-//                       var marker = new google.maps.Marker({
-//                           position: latlng, 
-//                           map: map, 
-//                           title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
-//                       });
-//                 }
-
-//                 function error(msg) {
-//                   var s = document.querySelector('#status');
-//                   s.innerHTML = typeof msg == 'string' ? msg : "failed";
-//                   s.className = 'fail';
-                  
-//                 }
-
-//                 if (navigator.geolocation) {
-//                   navigator.geolocation.getCurrentPosition(success, error);
-//                 } else {
-//                   error('not supported');
-//                 }
-              
-// },
-
+};
 
 
