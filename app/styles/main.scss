@@ -30,10 +30,18 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 }
 
 /* Custom page footer */
-.footer {
+.footer{
     padding-top: 19px;
     color: #777;
     border-top: 1px solid #e5e5e5;
+}
+
+ footer .aboutPic{
+    height: 75px;
+    width:75px;
+    border-radius: 110px;
+  
+    
 }
 
 .container-narrow > hr {

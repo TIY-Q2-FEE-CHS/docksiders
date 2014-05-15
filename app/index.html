@@ -117,15 +117,31 @@
             <h4>Your Adventure</h4>
 
         </div><!--end adventure box-->
+        <footer>
+        </footer>
 
 
-        <footer></footer><!--end footer-->
+        
+            <script type="template/html" id="aboutStaff">
+            
+            <% _.each(aboutData,function(element,index,list){ %>
+            <div>
+            <h4><img class="aboutPic"src="<%= element.photo %>"></h4>
+
+            <ul class="list-unstyled">
+                <li><%= element.name %></li>
+            </ul>
+        
+        <% }); %>
+            </script>
+        
        
 
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/underscore/underscore.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -155,10 +171,10 @@
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <script src="scripts/search.js"></script>
-        <script src="scripts/reviews.js"></script>
-        <script src="scripts/footer.js"></script>
+          <script src="scripts/main.js"></script> -->
+          <script src="scripts/search.js"></script> -->
+          <script src="scripts/reviews.js"></script> -->
+          <script src="scripts/footer.js"></script>
 
         <!-- endbuild -->
 </body>
