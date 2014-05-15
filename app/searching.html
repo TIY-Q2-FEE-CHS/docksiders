@@ -23,60 +23,54 @@
         <!-- endbuild -->
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <style>
-      html, body, #map-canvas {
-        height: 80%;
-        margin: 40px;
-        padding: 0px;
-      }
-    </style>
+   
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
     <script>
-var map;
-var infowindow;
+// var map;
+// var infowindow;
 
-function initialize() {
-  var charleston = new google.maps.LatLng(32.7745350, -79.928430);
+// function initialize() {
+//   var charleston = new google.maps.LatLng(32.7745350, -79.928430);
 
-  map = new google.maps.Map(document.getElementById('map-canvas'), {
-    center: charleston,
-    zoom: 15
-  });
+//   map = new google.maps.Map(document.getElementById('map-canvas'), {
+//     center: charleston,
+//     zoom: 15
+//   });
 
-  var request = {
-    location: charleston,
-    radius: 500,
-    types: ['park']
-  };
-  infowindow = new google.maps.InfoWindow();
-  var service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, callback);
-}
+//   var request = {
+//     location: charleston,
+//     radius: 500,
+//     types: ['park']
+//   };
+//   infowindow = new google.maps.InfoWindow();
+//   var service = new google.maps.places.PlacesService(map);
+//   service.nearbySearch(request, callback);
+// }
 
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
-  }
-}
+// function callback(results, status) {
+//   if (status == google.maps.places.PlacesServiceStatus.OK) {
+//     for (var i = 0; i < results.length; i++) {
+//       createMarker(results[i]);
+//     }
+//   }
+// }
 
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
+// function createMarker(place) {
+//   var placeLoc = place.geometry.location;
+//   var marker = new google.maps.Marker({
+//     map: map,
+//     position: place.geometry.location
+//   });
 
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
-  });
-}
+//   google.maps.event.addListener(marker, 'click', function() {
+//     infowindow.setContent(place.name);
+//     infowindow.open(map, this);
+//   });
+// }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+// google.maps.event.addDomListener(window, 'load', initialize);
 
-    </script>
+//     </script>
   </head>
 
   
@@ -157,7 +151,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
         </div><!--end container-->
     </div><!--end hchooser-->
-  <div id="map-canvas"></div>
+    <div class="row">
+        <div class="col-md-6">
+              <div id="map-canvas"></div>
+        </div>
+        <div class="col-md-6">
+        </div>
+    </div>
         <div class="adventurebox">
             
             <h4>Your Adventure</h4>
@@ -205,7 +205,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
             <!-- // <script src="scripts/main.js"></script> -->
-            <!-- // <script src="scripts/search.js"></script> -->
+        <script src="scripts/search.js"></script>
             <!-- // <script src="scripts/reviews.js"></script> -->
             <!-- // <script src="scripts/footer.js"></script> -->
 
