@@ -17,15 +17,10 @@ var aboutData= [
 ];
 
 
-
-
 $(document).ready(function(){
 //about data in footer
 
-
 var aboutTemplate = _.template ($('#aboutStaff').html(),aboutData);
 				$('footer').append(aboutTemplate);
-
-
 
 });
