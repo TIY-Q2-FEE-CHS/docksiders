@@ -14,6 +14,9 @@
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/footer.css">
+
+
 
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
@@ -178,13 +181,13 @@
             <script type="template/html" id="aboutStaff">
             
             <% _.each(aboutData,function(element,index,list){ %>
-            <div>
+            <div class="aboutStaff">
             <h4><img class="aboutPic"src="<%= element.photo %>"></h4>
 
             <ul class="list-unstyled">
                 <li><%= element.name %></li>
             </ul>
-        
+            </div>
         <% }); %>
             </script>
         

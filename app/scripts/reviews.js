@@ -70,7 +70,7 @@ $.ajax({
 
 },
 getHikingReviews: function() {},
-getFishingREviews: function() {},
+getFishingReviews: function() {},
 getBoatingReviews: function() {},
 getCampingReviews: function() {},
 getPicnicReviews: function() {},

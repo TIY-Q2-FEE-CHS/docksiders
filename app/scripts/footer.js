@@ -13,6 +13,10 @@ var aboutData= [
 		name:"Kat Mattison"
 	},
 	
+	{
+		photo:"http://i1.sndcdn.com/avatars-000043348921-lnmuj4-crop.jpg?77d7a69",
+		name:"Robert Hitt"
+	},
 ];
 
 
