@@ -28,55 +28,73 @@
         <![endif]-->
 
 
-        <header>
-                
+        <header>    
             <div class="container">
-                
                 <h3>The Exploratory Committee</h3>
-
-
                 <nav class="pull-right">
-                    
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="detail.html">Reviews</a></li>
                         <li><a href="searching.html">Searches</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
-
-
                 </nav>
-
-
             </div><!--end container-->
-
-
-
         </header><!--end header-->
 
-        <div class= "detailPage">
-            <div class="container">
+        <div class="reviewPage">
+            <div class="container reviewcontent">
+            <!-- Images with links of parks-->
+                <button type="button" class="btn btn-default">New Review</button>
+                <!-- stuff that you can't see initially -->
+            <div class="modal fade addReview" id="addReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">ExplorerSuggestion</h4>
+                        </div>
                 
-                <!-- Begin Net Reviews & Explorer Reviews -->
-                <div class="row">
-                    <div class="col-md-8">.col-md-8</div>
-                    
-                    
 
-
-                    <div class="col-md-4">.col-md-4</div>
-                </div>
-                <!-- End Net Reviews & Explorer Reviews -->
-
-
-
-
-
-
-
+        <form id="newReviewForm" action="">
+            
+            <div class="modal-body">
+        
+            <div class="form-group">
+                <label for="activityName">Tell us what You did!</label>
+                <input type="text" class="form-control newReviewTitle" id="reviewTitle" placeholder="Activity">
             </div>
-            <!-- Explorer Reviews Container ENDS -->
+            <div class="form-group">
+                <label for="yourName">Your Name</label>
+                <input type="text" class="form-control reviewerName" id="reviewerName" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label for="reviewerDate">Date</label>
+                <input type="text" class="form-control reviewerDate" id="reviewForm" placeholder="Date">
+            </div>
+            <div class="form-group">
+                <label for="reviewerEmail">Email</label>
+                <input type="text" class="form-control reviewerEmail" id="reviewerEmail" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="reviewerContentForm">Explorer Review</label>
+                <textarea id="reviewerContent" class="form-control reviewerContent"></textarea>
+                    
+            </div>
+        
+            </div>
+      
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary saveReview">Submit Review</button>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>
+
         </div>
+
         <!-- detailPage div class ENDS -->
 
 
@@ -87,7 +105,7 @@
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
-        <script src="../bower_components/underscore/underscore.js"></script>
+        <!-- // <script src="../bower_components/underscore/underscore.js"></script> -->
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -119,7 +137,7 @@
         <!-- build:js({app,.tmp}) scripts/main.js -->
             <!-- // <script src="scripts/main.js"></script> -->
             <!-- // <script src="scripts/search.js"></script> -->
-            <!-- // <script src="scripts/reviews.js"></script> -->
+            <script src="scripts/reviews.js"></script>
             <script src="scripts/footer.js"></script>
         <!-- endbuild -->
 </body>
