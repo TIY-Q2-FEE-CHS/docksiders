@@ -19,6 +19,7 @@ var explorerReviews = {
   initEvents: function() {
     $(".reviewcontent").on("click", this.showModal);
     $(".modal-footer").on("click", ".saveReview", this.completeReview);
+    $(".previews").on("click", this.showReview);
     
   },
 
@@ -51,7 +52,6 @@ var explorerReviews = {
 
   console.log(submittedReview);
 
-
 $.ajax({
       url: "http://tiy-fee-rest.herokuapp.com/collections/explorerReviews",
       type: "POST",
@@ -62,27 +62,48 @@ $.ajax({
       },
       success: function(data, dataType, jqXHR) {
         console.log("hurray");
+       
+      }
+    });
+
+},
+
+
+showReview: function (e) {
+    e.preventDefault();
+    console.log("this is a button");
+
+$.ajax({
+      url: "http://tiy-fee-rest.herokuapp.com/collections/explorerReviews",
+      type: "GET",
+      dataType: "JSON",
+      error: function(jqXHR, status, error) {
+        alert("Something is Wrong" + error);
+      },
+      success: function(data, dataType, jqXHR) {
+        console.log("YOU GOT IT NOW RETURN IT");
+
+          var reviewdata = data;
+          console.log(reviewdata);
+
+          var html = '';
+
+          for (var i = 0; i < reviewdata.length; i++){
+
+          html += '<li>' + reviewdata[i].activityName + '</li>';
+
+
+          };
+          console.log(html);
+$
+         $(".parkpics").html(html);
+
       }
     });
 
 }
 
 }
-
-// $.ajax({
-//       url: "http://tiy-fee-rest.herokuapp.com/collections/explorerReviews",
-//       type: "GET",
-//       dataType: "json",
-//       error: function(jqXHR, status, error) {
-//         alert("Something is Wrong" + error);
-//       },
-//       success: function(data, dataType, jqXHR) {
-//         console.log("success");
-
-//       }
-//     });
-
-
 
 
 
