@@ -21,74 +21,81 @@
         <script src="../bower_components/modernizr/modernizr.js"></script>
         <!-- // <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true_or_false"></script> -->
         <!-- endbuild -->
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-   
+    
+    
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
     <script>
-// var map;
-// var infowindow;
+    function geolocateUser() {
+        // If the browser supports the Geolocation API
+        if (navigator.geolocation)
+        {
+          var positionOptions = {
+            enableHighAccuracy: true,
+            timeout: 10 * 1000 // 10 seconds
+          };
+          navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, positionOptions);
+        }
+        else
+          document.getElementById("error").innerHTML += "Your browser doesn't support the Geolocation API";
+      }
 
-// function initialize() {
-//   var charleston = new google.maps.LatLng(32.7745350, -79.928430);
-
-//   map = new google.maps.Map(document.getElementById('map-canvas'), {
-//     center: charleston,
-//     zoom: 15
-//   });
-
-//   var request = {
-//     location: charleston,
-//     radius: 500,
-//     types: ['park']
-//   };
-//   infowindow = new google.maps.InfoWindow();
-//   var service = new google.maps.places.PlacesService(map);
-//   service.nearbySearch(request, callback);
-// }
-
-// function callback(results, status) {
-//   if (status == google.maps.places.PlacesServiceStatus.OK) {
-//     for (var i = 0; i < results.length; i++) {
-//       createMarker(results[i]);
-//     }
-//   }
-// }
-
-// function createMarker(place) {
-//   var placeLoc = place.geometry.location;
-//   var marker = new google.maps.Marker({
-//     map: map,
-//     position: place.geometry.location
-//   });
-
-//   google.maps.event.addListener(marker, 'click', function() {
-//     infowindow.setContent(place.name);
-//     infowindow.open(map, this);
-//   });
-// }
-
-// google.maps.event.addDomListener(window, 'load', initialize);
-
-//     </script>
+       function writeAddressName(latLng) {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({
+          "location": latLng
+        },
+        function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK)
+            document.getElementById("address").innerHTML = results[0].formatted_address;
+          else
+            document.getElementById("error").innerHTML += "Unable to retrieve your address" + "<br />";
+        });
+      }
+ 
+      function geolocationSuccess(position) {
+        var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        // Write the formatted address
+        writeAddressName(userLatLng);
+ 
+        var myOptions = {
+          zoom : 16,
+          center : userLatLng,
+          mapTypeId : google.maps.MapTypeId.ROADMAP
+        };
+        // Draw the map
+        var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
+        // Place the marker
+        new google.maps.Marker({
+          map: mapObject,
+          position: userLatLng
+        });
+        // Draw a circle around the user position to have an idea of the current localization accuracy
+        var circle = new google.maps.Circle({
+          center: userLatLng,
+          radius: position.coords.accuracy,
+          map: mapObject,
+          fillColor: '#0000FF',
+          fillOpacity: 0.5,
+          strokeColor: '#0000FF',
+          strokeOpacity: 1.0
+        });
+        mapObject.fitBounds(circle.getBounds());
+      }
+ 
+      function geolocationError(positionError) {
+        document.getElementById("error").innerHTML += "Error: " + positionError.message + "<br />";
+      }
+      </script>
   </head>
-
-  
-  </head>
-  
     <body>
 
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <header>
-
-                
+        <header>     
             <div class="container">
-                
                 <h3>The Exploratory Committee</h3>
-
                 <nav class="pull-right">
                     
                     <ul>
@@ -100,54 +107,48 @@
 
                 </nav>
 
-
             </div><!--end container-->
-
-
-
-
         </header><!--end header-->
  
-
         <div class="intro">
-            
-            
-    
-
-
+            <!-- this is a holder for the header background image -->
         </div><!--end intro-->
         
-
         <div class="hchooser">
-
             <div class="container">
             
-            <h4>This is where we will put info about how to use the app. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, est, atque, ullam hic minus dolorem suscipit natus qui consectetur numquam fugit quia assumenda nemo aperiam porro totam exercitationem ut tempore.</h4>
-
+            <h4>This is my searching page that is for practicing getting this to work</h4>
 
             <div class="row">
+                 
+                <div class="col-md-6 mapsoption">
+                    
+                    <h5>Nearby Spots</h5>
+
+                    <img src="/../imgs/maps.png" alt="" width="200">
+                    <!-- this is a placeholder for the real map once it works -->
+                    <p><b>Address</b>: <span id="address"></span></p>
+                    <p id="error"></p>
+                </div><!--end col-->
                 
-                <div class="col-md-6 searching">
-                  
-                    <button type="button" class="btn btn-default placesbutton" value="Show Map">Show Map</button>
+                <div class="col-md-6 typeoption">
                     
-                    <p>Map</p>
+                <h5>What's your style?</h5>
+
+                    <div class="typeslots">
+                    <!-- this is where people start the type query -->
+                        <button type="button btn" class="picker selector" value="hiking"><img src="/../imgs/hiking.png" alt="hiking-places"></button>
+                        <button type="button btn" class="picker selector" value="boating"><img src="/../imgs/boating.png" alt="boating-places"></button>
+                        <button type="button btn" class="picker selector" value="camping"><img src="/../imgs/camping.png" alt="camping-places"></button>
+                        <button type="button btn" class="picker selector" value="fishing"><img src="/../imgs/fishing.png" alt="fishing-places"></button>
+                        <button type="button btn" class="picker selector" value="picnicing"><img src="/../imgs/picnicing.png" alt="picnic-places"></button>
+                        <button type="button btn" class="picker selector" value="sightseeing"><img src="/../imgs/sightseeing.png" alt="sightseeing-places"></button>
+
+                    </div><!--end type slots-->
 
                 </div><!--end col-->
-
-                <div class="col-md-6">
-                  <!--   <body> -->
-
- <!--   </body> -->
-                    
-            
-                <p>Type</p>
-
-                </div><!--end col-->
-
 
             </div><!--end row-->
-
 
         </div><!--end container-->
     </div><!--end hchooser-->
@@ -156,6 +157,9 @@
               <div id="map-canvas"></div>
         </div>
         <div class="col-md-6">
+            <ul>
+            <li> the other half of the search query as a list</li>
+            </ul>
         </div>
     </div>
         <div class="adventurebox">

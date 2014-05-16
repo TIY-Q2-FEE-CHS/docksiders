@@ -18,9 +18,71 @@
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="../bower_components/modernizr/modernizr.js"></script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true_or_false"></script>
+        <!-- // <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true_or_false"></script> -->
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
         <!-- endbuild -->
+        <script>
+                function geolocateUser() {
+                    // If the browser supports the Geolocation API
+                    if (navigator.geolocation)
+                    {
+                      var positionOptions = {
+                        enableHighAccuracy: true,
+                        timeout: 10 * 1000 // 10 seconds
+                      };
+                      navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, positionOptions);
+                    }
+                    else
+                      document.getElementById("error").innerHTML += "Your browser doesn't support the Geolocation API";
+                  }
 
+                   function writeAddressName(latLng) {
+                    var geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({
+                      "location": latLng
+                    },
+                    function(results, status) {
+                      if (status == google.maps.GeocoderStatus.OK)
+                        document.getElementById("address").innerHTML = results[0].formatted_address;
+                      else
+                        document.getElementById("error").innerHTML += "Unable to retrieve your address" + "<br />";
+                    });
+                  }
+             
+                  function geolocationSuccess(position) {
+                    var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    // Write the formatted address
+                    writeAddressName(userLatLng);
+             
+                    var myOptions = {
+                      zoom : 16,
+                      center : userLatLng,
+                      mapTypeId : google.maps.MapTypeId.ROADMAP
+                    };
+                    // Draw the map
+                    var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
+                    // Place the marker
+                    new google.maps.Marker({
+                      map: mapObject,
+                      position: userLatLng
+                    });
+                    // Draw a circle around the user position to have an idea of the current localization accuracy
+                    var circle = new google.maps.Circle({
+                      center: userLatLng,
+                      radius: position.coords.accuracy,
+                      map: mapObject,
+                      fillColor: '#0000FF',
+                      fillOpacity: 0.5,
+                      strokeColor: '#0000FF',
+                      strokeOpacity: 1.0
+                    });
+                    mapObject.fitBounds(circle.getBounds());
+                  }
+             
+                  function geolocationError(positionError) {
+                    document.getElementById("error").innerHTML += "Error: " + positionError.message + "<br />";
+                  }
+        </script>
     </head>
     <body>
         <!--[if lt IE 10]>
@@ -48,7 +110,7 @@
                 </nav>
 
 
-            </div><!--end container-->
+            </div><!--end nav container-->
 
 
 
@@ -59,8 +121,6 @@
 
         <div class="intro">
             
-            
-
         </div><!--end intro-->
 
 
@@ -68,8 +128,7 @@
 
             <div class="container">
             
-            <h4>The Exploratory Committee connects lovers of the great outdoors with neat things to and a community to share their experiences with. Simply choose how you want to discover your next adventure below to get started!</h4>
-
+            <h4>The Exploratory Committee connects lovers of the great outdoors with neat things to do and a community to share their experiences with. Simply choose how you want to discover your next adventure below to get started!</h4>
 
             <div class="row">
                 
@@ -79,35 +138,30 @@
 
                     <img src="/../imgs/maps.png" alt="" width="200">
 
+                    <p><b>Address</b>: <span id="address"></span></p>
+                    <p id="error"></p>
+                    <!-- this is a placeholder for the real map once it works -->
+
                 </div><!--end col-->
 
                 <div class="col-md-6 typeoption">
                     
-            
                 <h5>What's your style?</h5>
 
                     <div class="typeslots">
-
-
-
-                       <a href="#"> <img src="/../imgs/hiking.png" alt="" </a>
-                       <a href="#"> <img src="/../imgs/boating.png" alt="" ></a>
-                        <a href="#"><img src="/../imgs/camping.png" alt="" ></a>
-                        <a href="#"><img src="/../imgs/fishing.png" alt="" ></a>
-                        <a href="#"><img src="/../imgs/picnicing.png" alt="" ></a>
-                        <a href="#"><img src="/../imgs/sightseeing.png" alt=""></a>
-
-                        
-
+                    <!-- this is where people start the type query -->
+                        <button type="button btn" class="picker selector" value="hiking"><img src="/../imgs/hiking.png" alt="hiking-places"></button>
+                        <button type="button btn" class="picker selector" value="boating"><img src="/../imgs/boating.png" alt="boating-places"></button>
+                        <button type="button btn" class="picker selector" value="camping"><img src="/../imgs/camping.png" alt="camping-places"></button>
+                        <button type="button btn" class="picker selector" value="fishing"><img src="/../imgs/fishing.png" alt="fishing-places"></button>
+                        <button type="button btn" class="picker selector" value="picnicing"><img src="/../imgs/picnicing.png" alt="picnic-places"></button>
+                        <button type="button btn" class="picker selector" value="sightseeing"><img src="/../imgs/sightseeing.png" alt="sightseeing-places"></button>
 
                     </div><!--end type slots-->
 
-
                 </div><!--end col-->
 
-
             </div><!--end row-->
-
 
         </div><!--end container-->
         </div><!--end hchooser-->
@@ -115,6 +169,7 @@
         <div class="adventurebox">
             
             <h4>Your Adventure</h4>
+            <div id="map"></div>
 
         </div><!--end adventure box-->
         <footer>
@@ -166,7 +221,7 @@
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
-            <!-- // <script src="scripts/main.js"></script> -->
+            <script src="scripts/main.js"></script>
            <!-- // <script src="scripts/search.js"></script> / -->
             <!-- // <script src="scripts/reviews.js"></script> -->
              <script src="scripts/footer.js"></script>

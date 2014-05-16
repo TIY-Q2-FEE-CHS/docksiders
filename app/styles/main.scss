@@ -14,88 +14,6 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
         padding: 0px;
       }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
- 
-}
-
-/* Custom page header */
-.header {
-    border-bottom: 1px solid #e5e5e5;
-
-    /* Make the masthead heading the same height as the navigation */
-    h3 {
-        margin-top: 0;
-        margin-bottom: 0;
-        line-height: 40px;
-        padding-bottom: 19px;
-    }
-}
-
-/* Custom page footer */
-.footer{
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
-}
-
- footer .aboutPic{
-    height: 75px;
-    width:75px;
-    border-radius: 110px;
-  
-    
-}
-
-.container-narrow > hr {
-    margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
-    .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-    }
-}
-
-/* Supporting marketing content */
-.marketing {
-    margin: 40px 0;
-    p + h4 {
-        margin-top: 28px;
-    }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .container {
-    }
-
-    /* Remove the padding we set earlier */
-    .header,
-    .marketing,
-    .footer {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    /* Space out the masthead */
-    .header {
-        margin-bottom: 30px;
-    }
-
-    /* Remove the bottom border on the jumbotron for visual effect */
-    .jumbotron {
-        border-bottom: 0;
-    }
-}
-
-
 
 
 /* Our Styles */
@@ -143,16 +61,12 @@ header nav ul li a:hover{
     color: white;
 }
 
-
-
 .intro{
     width: 100%;
     min-height: 500px;
     background-color: black;
         background-image: url("/imgs/headerbg.png");
     background-size: cover;
-
-
 }
 
 .intro h2{
@@ -172,7 +86,6 @@ header nav ul li a:hover{
     padding: 50px 0 50px 0 !important;
     font-size: 18px;
     line-height: 24px;
-
 }
 
 .hchooser h5{
@@ -187,8 +100,6 @@ header nav ul li a:hover{
     display: block;
     margin: 20px auto 20px auto !important;
 }
-
-
 
 .typeslots{
     width: 350px;
@@ -206,8 +117,8 @@ header nav ul li a:hover{
     height: 100px;
 }
 
-.typeslots a:hover{
-    background-color: #f7f2ec;
+.typeslots btn:hover{
+    background-color: #65A832;
 }
 
 
@@ -263,3 +174,93 @@ footer{
     height: 300px;
     background-color: #494540;
 }
+
+// for the footer and underscore template
+ footer .aboutPic{
+    height: 75px;
+    width:75px;
+    border-radius: 110px;  
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .container {
+    }
+
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
+}
+
+
+//these are the bootstrap styles
+
+// /* Everything but the jumbotron gets side spacing for mobile first views */
+// .header,
+// .marketing,
+// .footer {
+ 
+// }
+
+/* Custom page header */
+// .header {
+//     border-bottom: 1px solid #e5e5e5;
+
+//     /* Make the masthead heading the same height as the navigation */
+//     h3 {
+//         margin-top: 0;
+//         margin-bottom: 0;
+//         line-height: 40px;
+//         padding-bottom: 19px;
+//     }
+// }
+
+/* Custom page footer */
+// .footer{
+//     padding-top: 19px;
+//     color: #777;
+//     border-top: 1px solid #e5e5e5;
+// }
+
+
+
+
+// .container-narrow > hr {
+//     margin: 30px 0;
+// }
+
+/* Main marketing message and sign up button */
+// .jumbotron {
+//     text-align: center;
+//     border-bottom: 1px solid #e5e5e5;
+//     .btn {
+//         font-size: 21px;
+//         padding: 14px 24px;
+//     }
+// }
+
+/* Supporting marketing content */
+// .marketing {
+//     margin: 40px 0;
+//     p + h4 {
+//         margin-top: 28px;
+//     }
+// }
+
+
+
+
