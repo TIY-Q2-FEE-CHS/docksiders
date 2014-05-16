@@ -94,29 +94,56 @@ $.ajax({
           var reviewdata = data;
           console.log(reviewdata);
 
-
-
           var html = '';
-
           for (var i = 0; i < reviewdata.length; i++){
-
-
-          html += '<li>' + reviewdata[i].activityName + "- " + reviewdata[i].reviewerName + '</li>';
-
-
-
+          html += '<li>' + reviewdata[i].activityName + " - " + reviewdata[i].reviewerName + '</li>';
           };
           console.log(html);
-$
+
          $(".parkpics").html(html);
 
       }
     });
 
 }
+  // removereviewData: function() {
+  //   e.preventDefault();
+  //   console.log("this is the remove button");
+    
+  //   $.ajax({
+  //     url: "http://tiy-fee-rest.herokuapp.com/collections/explorerReviews",
+  //     type: "DELETE",
+  //     error: function(jqXHR, status, error) {
+  //       alert("something is wrong" + error);
+  //     }, 
+  //     success: function(data) {
+  //       alert("Nicely Done review deleted");
+
+  //       var $thisReview = $(this).closest("article")
+        
+  //       var postId = $thisReview.data("");
+  //        submittedReview.render();  
+         
+  //     }
+  //   });
+  // }
 
 }
-
+// removePost: function() {
+//     var $thisPost = $(this).closest("article")
+//     var postId = $thisPost.data("postid");
+//     $.ajax({
+//       url: "http://tiy-fee-rest.herokuapp.com/collections/myBlog/" + postId,
+//       type: "DELETE",
+//       error: function(jqXHR, status, error) {
+//         alert("couldnt delete");
+//       }, 
+//       success: function(data) {
+//          myBlog.renderPosts();  
+//          myBlog.renderSideBar();
+//       }
+//     });
+//   },
 
 
 // stuff that i am working with
@@ -224,30 +251,30 @@ $
 //     });
 
 //   },
-//   removePost: function() {
-//     var $thisPost = $(this).closest("article")
-//     var postId = $thisPost.data("postid");
-//     $.ajax({
-//       url: "http://tiy-fee-rest.herokuapp.com/collections/myBlog/" + postId,
-//       type: "DELETE",
-//       error: function(jqXHR, status, error) {
-//         alert("couldnt delete");
-//       }, 
-//       success: function(data) {
-//          myBlog.renderPosts();  
-//          myBlog.renderSideBar();
-//       }
-//     });
-//   },
-//   updatePost: function(postId) {
-//      console.log("work in update method");
-//      var id = postId;
-//         var editPost = {
-//               title: $(".editPostTitle").val(),
-//               date: new Date(),
-//               content: this.encodeToString($(".editContentForm").val()),
-//               author: $(".editAuthorPostForm").val()
-//         };
+  // removePost: function() {
+  //   var $thisPost = $(this).closest("article")
+  //   var postId = $thisPost.data("postid");
+  //   $.ajax({
+  //     url: "http://tiy-fee-rest.herokuapp.com/collections/myBlog/" + postId,
+  //     type: "DELETE",
+  //     error: function(jqXHR, status, error) {
+  //       alert("couldnt delete");
+  //     }, 
+  //     success: function(data) {
+  //        myBlog.renderPosts();  
+  //        myBlog.renderSideBar();
+  //     }
+  //   });
+  // },
+  // updatePost: function(postId) {
+  //    console.log("work in update method");
+  //    var id = postId;
+  //       var editPost = {
+  //             title: $(".editPostTitle").val(),
+  //             date: new Date(),
+  //             content: this.encodeToString($(".editContentForm").val()),
+  //             author: $(".editAuthorPostForm").val()
+  //       };
 //     $.ajax({
 //       url: "http://tiy-fee-rest.herokuapp.com/collections/myBlog/" + id,
 //       type: "PUT",
