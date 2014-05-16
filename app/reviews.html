@@ -42,40 +42,31 @@
         </header><!--end header-->
 
         <div class="reviewPage">
-                <div class="container previews">
-                    <div class="park-previews">
-                        <!-- Images with links of parks-->
-                        <p>this is where i will put my pics</p>
-                        <button type="button" class="btn btn-default picturemaker">Pics</button>
-                        <div class="container-previews">
+            <div class="container previews">
+                <div class="park-previews">
+                    <!-- Images with links of parks-->
+                    <button type="button" class="btn btn-default picturemaker">See Review Data</button>
+                    <div class="container-previews">
                         <ul class="parkpics">
                         </ul>
                     </div>
-                    </div>
                 </div>
-
-             <div>
+            </div>
+            <div>
                 <p>this is where i will put my pics</p>
             </div>
-
-            <div class="container reviewcontent">
-                    
-                        
-                    <button type="button" class="btn btn-default">New Review</button>
-                        <!-- stuff that you can't see initially -->
-                    <div class="modal fade addReview" id="addReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title" id="myModalLabel">ExplorerSuggestion</h4>
-                                </div>
-                        
-
-                                <form id="newReviewForm" action="">
-                                    
-                                    <div class="modal-body">
-                                
+            <div class="container reviewcontent">              
+                <button type="button" class="btn btn-default">New Review</button>
+                <!-- Review Modal Shown Upon Button Click-->
+                <div class="modal fade addReview" id="addReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">ExplorerSuggestion</h4>
+                            </div>
+                            <form id="newReviewForm" action=""> 
+                                <div class="modal-body">
                                     <div class="form-group">
                                         <label for="yourName">Your Name</label>
                                         <input type="text" class="form-control reviewerName" id="reviewerName" placeholder="Your Name">
@@ -84,7 +75,6 @@
                                         <label for="activityName">Tell us what You did!</label>
                                         <input type="text" class="form-control newReviewTitle" id="reviewTitle" placeholder="Activity">
                                     </div>
-                                    
                                     <div class="form-group">
                                         <label for="reviewerDate">Date</label>
                                         <input type="text" class="form-control reviewerDate" id="reviewForm" placeholder="Date">
@@ -95,20 +85,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="reviewerContentForm">Explorer Review</label>
-                                        <textarea id="reviewerContent" class="form-control reviewerContent"></textarea>
-                                            
+                                        <textarea id="reviewerContent" class="form-control reviewerContent"></textarea>     
                                     </div>
-                                
-                                    </div>
-                              
-                                    <div class="modal-footer">
+                                </div>
+                                <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary saveReview">Submit Review</button>
-                                    </div>
-                              </form>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
         </div> 
 
