@@ -13,8 +13,11 @@
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/reviews.css">
         <link rel="stylesheet" href="styles/main.css">
+
+
        
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
@@ -103,14 +106,30 @@
         <!-- detailPage div class ENDS -->
 
 
-        <footer></footer><!--end footer-->
-       
+        <footer>
+            <div class="footerContainer">
+                
+            </div>
+        
+        </footer>
 
+            <script type="template/html" id="aboutStaff">
+            
+            <% _.each(aboutData,function(element,index,list){ %>
+            <div class="aboutStaff">
+            <h4><img class="aboutPic"src="<%= element.photo %>"></h4>
+
+            <ul class="list-unstyled">
+                <li><%= element.name %></li>
+            </ul>
+            </div>
+        <% }); %>
+            </script>
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
-        <!-- // <script src="../bower_components/underscore/underscore.js"></script> -->
+        // <script src="../bower_components/underscore/underscore.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 

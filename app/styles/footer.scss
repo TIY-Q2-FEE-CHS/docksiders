@@ -1,5 +1,6 @@
 footer {
 	border: 3px solid red;
+	text-align: center;
 }
 
 .aboutStaff {
@@ -9,13 +10,14 @@ footer {
 	padding: 50px !important;
 	margin: 100px;
 	list-style-type: none;
-	position: center;
+	position: center !important;
 	.aboutPic {
 		width: 100px !important;
 		height: 100px !important;
 		box-shadow: 5px 10px 10px -5px !important;
 		border: 2px solid black;
 		position: center;
+		margin: 0 auto !important;
 	}
 	.list-unstyled {
 		text-align: center;
