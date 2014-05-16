@@ -17,7 +17,7 @@ var explorerReviews = {
 
   },
   initEvents: function() {
-    $(".reviewcontent").on("click", this.showModal);
+    $(".reviewcontent").on("click", explorerReviews.showModal);
     $(".modal-footer").on("click", ".saveReview", this.completeReview);
     $(".previews").on("click", this.showReview);
     
@@ -32,9 +32,10 @@ var explorerReviews = {
     e.preventDefault();
   console.log("consider this submitted");
 
-  var activity = $('.newReviewTitle').val();
-
+  
   var name = $('.reviewerName').val();
+
+  var activity = $('.newReviewTitle').val();
   
   var ourDate = $('.reviewerDate').val();
   
@@ -43,11 +44,12 @@ var explorerReviews = {
   var comment = $('.reviewerContent').val();
   
     var submittedReview = {
-      activityName: activity,
       reviewerName: name,
+      activityName: activity,
       reviewDate: ourDate,
       reviewerEmail: email,
       reviewerComment: comment,
+      relatedActivity: "hiking"
     };
 
   console.log(submittedReview);
@@ -62,11 +64,17 @@ $.ajax({
       },
       success: function(data, dataType, jqXHR) {
         console.log("hurray");
-       
+       $("#addReview").modal("hide");
       }
     });
 
 },
+getHikingReviews: function() {},
+getFishingREviews: function() {},
+getBoatingReviews: function() {},
+getCampingReviews: function() {},
+getPicnicReviews: function() {},
+getSightseeingReviews: function() {},
 
 
 showReview: function (e) {
@@ -86,11 +94,15 @@ $.ajax({
           var reviewdata = data;
           console.log(reviewdata);
 
+
+
           var html = '';
 
           for (var i = 0; i < reviewdata.length; i++){
 
-          html += '<li>' + reviewdata[i].activityName + '</li>';
+
+          html += '<li>' + reviewdata[i].activityName + "- " + reviewdata[i].reviewerName + '</li>';
+
 
 
           };
