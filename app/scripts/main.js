@@ -26,7 +26,6 @@ var exploring = {
     var pickedthing = $(this).attr("value");
             console.log(pickedthing);
 
-  
   },
 
    findMe: function(e) {

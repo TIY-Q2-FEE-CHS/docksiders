@@ -2,54 +2,56 @@ $(document).ready(function() {
 
   placesData.init();
 
+  });
+
 // });
   
-  var map;
-  var infowindow;
+//   var map;
+//   var infowindow;
 
-  function initialize() {
-    var charleston = new google.maps.LatLng(32.7745350, -79.928430);
+//   function initialize() {
+//     var charleston = new google.maps.LatLng(32.7745350, -79.928430);
 
-    map = new google.maps.Map(document.getElementById('map-canvas'), {
-      center: charleston,
-      zoom: 10
-    });
+//     map = new google.maps.Map(document.getElementById('map-canvas'), {
+//       center: charleston,
+//       zoom: 10
+//     });
 
-    var request = {
-      location: charleston,
-      radius: 5000,
-      types: ['public+boat+landing']
-    };
+//     var request = {
+//       location: charleston,
+//       radius: 5000,
+//       types: ['public+boat+landing']
+//     };
 
-    infowindow = new google.maps.InfoWindow();
-    var service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, callback);
-}
+//     infowindow = new google.maps.InfoWindow();
+//     var service = new google.maps.places.PlacesService(map);
+//     service.nearbySearch(request, callback);
+// }
 
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
-  }
-}
+// function callback(results, status) {
+//   if (status == google.maps.places.PlacesServiceStatus.OK) {
+//     for (var i = 0; i < results.length; i++) {
+//       createMarker(results[i]);
+//     }
+//   }
+// }
 
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
+// function createMarker(place) {
+//   var placeLoc = place.geometry.location;
+//   var marker = new google.maps.Marker({
+//     map: map,
+//     position: place.geometry.location
+//   });
 
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
-  });
-}
+//   google.maps.event.addListener(marker, 'click', function() {
+//     infowindow.setContent(place.name);
+//     infowindow.open(map, this);
+//   });
+// }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+// google.maps.event.addDomListener(window, 'load', initialize);
 
-});
+
 
 // this is where the rest of the functions are organized and managed
 
@@ -63,7 +65,7 @@ var placesData = {
     
   },
   initEvents: function() { 
-    $(".typeslots").on("click", ".selector", this.findType);
+    // $(".typeslots").on("click", ".selector", this.findType);
     $(".mapsoption").on("click", "img", this.findMe);
   
   	// $(".searching").on("click", ".placesbutton", this.findplaces);
@@ -140,14 +142,16 @@ var placesData = {
           strokeOpacity: 1.0
         });
         mapObject.fitBounds(circle.getBounds());
+
+      }
       
       function geolocationError(positionError) {
         document.getElementById("error").innerHTML += "Error: " + positionError.message + "<br />";
       }
-    }
-},
+    
+}
 
-      findMeNow: function (e){
+      // findMeNow: function (e){
       //   e.preventDefault;
 
       //   if (navigator.geolocation) {
@@ -198,7 +202,7 @@ var placesData = {
 
       // }
 
-}
+// 
 
 
 
