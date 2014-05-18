@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-
 });
 
 $(".typeslots").on("click", "button", getMyLocation);
@@ -9,10 +8,11 @@ var map;
 
 function getMyLocation() {
 
+  
 	window.pickedthing = $(this).attr("value");
     console.log(pickedthing);
-	
-	// console.log("i heard you click the map");
+	 $(".youradventure").removeClass('hide');
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(displayLocation);
   } else {
@@ -81,11 +81,13 @@ function createMarker(latLng, placeResult) {
     animation: google.maps.Animation.DROP,
     clickable: true
   }
-  //Setting up the marker object to mark the location on the map canvas.
+ 
   var marker = new google.maps.Marker(markerOptions);
 
   if (placeResult) {
-    var content = placeResult.name+"<br/>"+placeResult.vicinity+"<br/>"+placeResult.types;
+    // html = '';
+
+    var content = '<h4>'+placeResult.name+'</h4><p>'+placeResult.vicinity+'</p>';
     addInfoWindow(marker, latLng, content);
     addResultsList(content);
   }
