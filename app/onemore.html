@@ -24,7 +24,67 @@
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVsHwZR7Gk2n4EBh0ZAvg2yDbRmMsza3g&sensor=true"></script> -->
 
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBVsHwZR7Gk2n4EBh0ZAvg2yDbRmMsza3g&sensor=true"></script>
-  
+
+      <script>
+        var map;
+        var infowindow;
+        var pyrmont;
+
+        function initialize() {
+            pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
+            map = new google.maps.Map(document.getElementById('map'), {
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: pyrmont,
+                zoom: 15
+            });
+        }
+
+        function btnSearch_onclick() {
+            initialize();
+            var request = {
+                //                location: pyrmont,
+                location:new google.maps.LatLng(-33.8665433, 151.1956316),
+                radius: 500,
+                //                types: ['food']
+                types: [txtPlaceType.value]
+            };
+            infowindow = new google.maps.InfoWindow();
+            var service = new google.maps.places.PlacesService(map);
+            service.nearbySearch(request, GetResults);
+        }
+
+        function GetResults(results, status) {
+            if (results.length > 0) {
+
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                        createMarker(results[i]);
+                    }
+                }
+            }
+            else {
+                alert("No result.");
+            }
+        }
+
+        function createMarker(place) {
+            var placeLoc = place.geometry.location;
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+    
+
+    </script>
 
   </head>
     <body>
@@ -85,10 +145,10 @@
                     <!-- this is where people start the type query -->
                         <button type="button btn" class="picker selector" value="hiking"><img src="/../imgs/hiking.png" alt="hiking-places"></button>
                         <button type="button btn" class="picker selector" value="marina"><img src="/../imgs/boating.png" alt="boating-places"></button>
-                        <button type="button btn" class="picker selector" value="campground"><img src="/../imgs/camping.png" alt="camping-places"></button>
+                        <button type="button btn" class="picker selector" value="camping"><img src="/../imgs/camping.png" alt="camping-places"></button>
                         <button type="button btn" class="picker selector" value="fishing"><img src="/../imgs/fishing.png" alt="fishing-places"></button>
                         <button type="button btn" class="picker selector" value="park"><img src="/../imgs/picnicing.png" alt="picnic-places"></button>
-                        <button type="button btn" class="picker selector" value="sightseeing"><img src="/../imgs/sightseeing.png" alt="sightseeing-places"></button>
+                        <button type="button btn" class="picker selector" value="tour"><img src="/../imgs/sightseeing.png" alt="sightseeing-places"></button>
 
                     </div><!--end type slots-->
 
@@ -109,17 +169,23 @@
               
         </div>
         <div class="col-md-6">
-
-            <div class="listedAdventures">
-            </div>
             <ul>
             <li> the other half of the search query as a list</li>
             </ul>
         </div>
     </div>
         <div class="adventurebox">
+
             
             <h4>Your Adventure</h4>
+                <div id="Search">
+                <label id="lblSearchLabel" >Type</label>   &nbsp &nbsp
+                <input id="txtPlaceType"  type="text" style="width: 100px; height: 20px;" />
+                &nbsp &nbsp
+                 <input id="btnSearch"  type="button" value="Search" onclick="return btnSearch_onclick()" />
+                </div>
+
+            <div id="map"></div>
            
 
         </div><!--end adventure box-->
@@ -182,7 +248,7 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
             <!-- // <script src="scripts/main.js"></script> -->
-        <script src="scripts/testingsearch.js"></script>
+      
             <!-- // <script src="scripts/reviews.js"></script> -->
              <script src="scripts/footer.js"></script>
 

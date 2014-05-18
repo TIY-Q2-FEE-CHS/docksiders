@@ -1,18 +1,15 @@
 $(document).ready(function(){
 
 
-
 });
 
 $(".typeslots").on("click", "button", getMyLocation);
 
-
 var map;
-var pickedthing; 
 
 function getMyLocation() {
 
-	var pickedthing = $(this).attr("value");
+	window.pickedthing = $(this).attr("value");
     console.log(pickedthing);
 	
 	// console.log("i heard you click the map");
@@ -33,7 +30,7 @@ function displayLocation(position) {
   var latLng = new google.maps.LatLng(latitude, longitude);
 
  	showMap(latLng);
-	addNearByPlaces(latLng);
+	addNearByPlaces(latLng, pickedthing);
   	createMarker(latLng);
 
   //Also setting the latitude and longitude values in another div.
@@ -53,12 +50,9 @@ function showMap(latLng) {
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 }
 
-function addNearByPlaces(latLng) {
-
-	
+function addNearByPlaces(latLng, pickedthing) {
 
   var nearByService = new google.maps.places.PlacesService(map);
-  // var idea = $(".button").attr("value");
 
   var request = {
     location: latLng,
@@ -70,10 +64,12 @@ function addNearByPlaces(latLng) {
 }
 
 function handleNearBySearchResults(results, status) {
+
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       var place = results[i];
       createMarker(place.geometry.location, place);
+      console.log(results);
     }
   }
 }
@@ -91,6 +87,7 @@ function createMarker(latLng, placeResult) {
   if (placeResult) {
     var content = placeResult.name+"<br/>"+placeResult.vicinity+"<br/>"+placeResult.types;
     addInfoWindow(marker, latLng, content);
+    addResultsList(content);
   }
   else {
     var content = "You are here: " + latLng.lat() + ", " + latLng.lng();
@@ -112,29 +109,9 @@ function addInfoWindow(marker, latLng, content) {
   });
 }
 
-// var request = {
-//     location: latLng,
-//     radius: 1000,
-//     keyword: ''
-//   };
+function addResultsList(content){
 
-//   infowindow = new google.maps.InfoWindow();
-//   var service = new google.maps.places.PlacesService(map);
-//   service.nearbySearch(request, callback);
+  $(".listedAdventures").append(content);
 
-//   var request2 = {
-//     location: latLng,
-//     radius: 500,
-//     keyword: 'beach'
-//   };
-//   var service2 = new google.maps.places.PlacesService(map);
-//   service2.nearbySearch(request2, callback);
-
-//   var request3 = {
-//     location: latLng,
-//     radius: 500,
-//     keyword: 'marina'
-//   };
-//   var service3 = new google.maps.places.PlacesService(map);
-//   service3.nearbySearch(request3, callback);
+}
 
