@@ -24,3 +24,7 @@ display: -webkit-flex;
 	width: 150px;
 	height:150px;
 }
+
+.container-previews {
+	list-style-type: none;
+}
