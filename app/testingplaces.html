@@ -16,16 +16,15 @@
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/footer.css">
+
+
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="../bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
-   <!-- <script type="text/javascript"
-       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVsHwZR7Gk2n4EBh0ZAvg2yDbRmMsza3g&sensor=true"></script> -->
-
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBVsHwZR7Gk2n4EBh0ZAvg2yDbRmMsza3g&sensor=true"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBVsHwZR7Gk2n4EBh0ZAvg2yDbRmMsza3g&sensor=true"></script>
   
-
   </head>
     <body>
 
@@ -43,6 +42,7 @@
                         <li><a href="reviews.html">Reviews</a></li>
                         <li><a href="searching.html">Searches</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                        <li><a href="testingplaces.html">Testing</a></li>
                     </ul>
 
                 </nav>
@@ -57,79 +57,52 @@
         <div class="hchooser">
             <div class="container">
             
-            <h4>This is my searching page that is for practicing getting this to work</h4>
+             <h4>The Exploratory Committee connects lovers of the great outdoors with neat things to do and a community to share their experiences with. Simply choose how you want to discover your next adventure below to get started!</h4>
 
-            <div class="row">
-                 
-                <div class="col-md-6 mapsoption">
-                    
-                    <h5>Nearby Spots</h5>
-                    <p> Click on the map to view all nearby locations</p>
+                <div class="row">
+                        
+                    <h5>What's your style?</h5>
 
-                    <img src="/../imgs/maps.png" alt="" width="200">
-                   
-                    <p><b>Address</b>: <span id="address"></span></p>
-                    <p id="error"></p>
+                        <div class="typeslots">
+                        <!-- this is where people start the type query -->
+                            <button type="button btn" class="picker selector" value="hiking"><img src="/../imgs/hiking.png" alt="hiking-places"></button>
+                            <button type="button btn" class="picker selector" value="marina"><img src="/../imgs/boating.png" alt="boating-places"></button>
+                            <button type="button btn" class="picker selector" value="campground"><img src="/../imgs/camping.png" alt="camping-places"></button>
+                            <button type="button btn" class="picker selector" value="fishing"><img src="/../imgs/fishing.png" alt="fishing-places"></button>
+                            <button type="button btn" class="picker selector" value="park"><img src="/../imgs/picnicing.png" alt="picnic-places"></button>
+                            <button type="button btn" class="picker selector" value="sightseeing"><img src="/../imgs/sightseeing.png" alt="sightseeing-places"></button>
 
-                    <div id="location">
-                        Your location will go here.
-                    </div>
+                        </div><!--end type slots-->
 
-                </div><!--end col-->
-                
-                <div class="col-md-6 typeoption">
-                    
-                <h5>What's your style?</h5>
-
-                    <div class="typeslots">
-                    <!-- this is where people start the type query -->
-                        <button type="button btn" class="picker selector" value="hiking"><img src="/../imgs/hiking.png" alt="hiking-places"></button>
-                        <button type="button btn" class="picker selector" value="marina"><img src="/../imgs/boating.png" alt="boating-places"></button>
-                        <button type="button btn" class="picker selector" value="campground"><img src="/../imgs/camping.png" alt="camping-places"></button>
-                        <button type="button btn" class="picker selector" value="fishing"><img src="/../imgs/fishing.png" alt="fishing-places"></button>
-                        <button type="button btn" class="picker selector" value="park"><img src="/../imgs/picnicing.png" alt="picnic-places"></button>
-                        <button type="button btn" class="picker selector" value="sightseeing"><img src="/../imgs/sightseeing.png" alt="sightseeing-places"></button>
-
-                    </div><!--end type slots-->
-
-                </div><!--end col-->
-
-            </div><!--end row-->
-          
-
-        </div><!--end container-->
-    </div><!--end hchooser-->
-    <div class="row">
+                </div><!--end row-->
+            </div><!--end container-->
+        </div><!--end hchooser-->
+    <div class="row youradventure hide">
         <div class="col-md-6">
             <body>
            
                 <div id="map-canvas"></div>
          
-            </body>
-              
+            </body>   
         </div>
         <div class="col-md-6">
-
-            <div class="listedAdventures">
+            <div class="containter">
+                 <h5><b>Your Location</b>: <span id="address"></span></h5>
+                <p id="error"></p>
+                    <div id="location">
+                        Your location coordinates.
+                    </div>
+                 <h3>Nearby Spots</h3>
+                    <ul class="listedAdventures">
+                    </ul>
             </div>
-            <ul>
-            <li> the other half of the search query as a list</li>
-            </ul>
         </div>
     </div>
-        <div class="adventurebox">
-            
-            <h4>Your Adventure</h4>
-           
-
-        </div><!--end adventure box-->
-
-
+    
         <footer>
             <div class="footerContainer">
                 
             </div>
-        
         </footer>
 
             <script type="template/html" id="aboutStaff">
@@ -182,7 +155,7 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
             <!-- // <script src="scripts/main.js"></script> -->
-        <script src="scripts/testingsearch.js"></script>
+            <script src="scripts/testingsearch.js"></script>
             <!-- // <script src="scripts/reviews.js"></script> -->
              <script src="scripts/footer.js"></script>
 
