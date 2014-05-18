@@ -43,7 +43,16 @@
                 </nav>
             </div><!--end container-->
         </header><!--end header-->
-
+        <nav class=>
+        <ul class="navbar flex-container reviewCategories">
+            <li class="hikingReviews"><img src="http://www.mountainphotography.com/images/large/201207_swiftcurrentHiking.jpg" alt=""></li>
+            <li class= "boatingReviews"><img src="http://www.overseainsurance.com/blog/wp-content/uploads/2013/12/boating-full.jpg" alt=""></li>
+            <li class= "campingReviews"><img src="http://www.bonjourquebec.com/fileadmin/Image/decouvrez/activites/sports_plein_air/camping/tq_007420-camping_g.jpg" alt=""></li>
+            <li class= "fishingReviews"><img src="http://www.wascleader.com/wp-content/uploads/2013/11/Fishing_1.jpg" alt=""></li>
+            <li class= "picnicReviews"><img src="http://img2-1.timeinc.net/toh/i/step-by-step/09/07-build-buy/00-picnic-bench-x.jpg" alt=""></li>
+            <li class= "sightseeingReviews"><img src="http://pmfranklin.com/Portfolios/Destinations%20Portfolio/images/Charleston-Battery,-Charleston-SC,-USA.jpg" alt=""></li>
+        </ul>  
+    </nav>
         <div class="reviewPage">
             <div class="container previews">
                 <div class="park-previews">
@@ -59,25 +68,39 @@
                 <p>this is where i will put my pics</p>
             </div>
             <div class="container reviewcontent">              
-                <button type="button" class="btn btn-default">New Review</button>
-                <!-- Review Modal Shown Upon Button Click-->
-                <div class="modal fade addReview" id="addReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="myModalLabel">ExplorerSuggestion</h4>
-                            </div>
-                            <form id="newReviewForm" action=""> 
+                <!-- Button trigger modal -->
+                <button class="btn btn-default" data-toggle="modal" data-target="#myModal">
+                  Launch demo modal
+                </button>
+                <div class="reviewContent">
+                    
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                      </div>
+                      <div class="modal-body">
+                       <form id="newReviewForm" action=""> 
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="yourName">Your Name</label>
                                         <input type="text" class="form-control reviewerName" id="reviewerName" placeholder="Your Name">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="activityName">Tell us what You did!</label>
-                                        <input type="text" class="form-control newReviewTitle" id="reviewTitle" placeholder="Activity">
-                                    </div>
+                                    <p>Activity</p>
+                 <select class="newReviewTitle">
+                    
+                    <option>Hiking</option>
+                    <option>Boating</option>
+                    <option>Camping</option>
+                    <option>Fishing</option>
+                    <option>Picnic</option>
+                    <option>Sight Seeing</option>
+                   
+                 </select>
                                     <div class="form-group">
                                         <label for="reviewerDate">Date</label>
                                         <input type="text" class="form-control reviewerDate" id="reviewForm" placeholder="Date">
@@ -91,13 +114,14 @@
                                         <textarea id="reviewerContent" class="form-control reviewerContent"></textarea>     
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary saveReview">Submit Review</button>
-                                </div>
-                            </form>
-                        </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary saveReview" data-dismiss="modal">Save Review</button>
+                      </div>
                     </div>
+                  </div>
                 </div>
             </div>
         </div> 
@@ -129,7 +153,7 @@
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
-        // <script src="../bower_components/underscore/underscore.js"></script>
+        <script src="../bower_components/underscore/underscore.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
