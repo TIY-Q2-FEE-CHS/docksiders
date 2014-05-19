@@ -8,10 +8,10 @@ var map;
 
 function getMyLocation() {
 
-  
 	window.pickedthing = $(this).attr("value");
     console.log(pickedthing);
-	 $(".youradventure").removeClass('hide');
+    $(".youradventure").removeClass('hide');
+    $(".listedAdventures").empty();
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(displayLocation);
@@ -83,6 +83,7 @@ function createMarker(latLng, placeResult) {
   }
  
   var marker = new google.maps.Marker(markerOptions);
+  var marker2 = new google.maps.Marker(markerOptions);
 
   if (placeResult) {
     // html = '';
@@ -93,7 +94,7 @@ function createMarker(latLng, placeResult) {
   }
   else {
     var content = "You are here: " + latLng.lat() + ", " + latLng.lng();
-    addInfoWindow(marker, latLng, content);
+    addInfoWindow(marker2, latLng, content);
   }
 
 }
