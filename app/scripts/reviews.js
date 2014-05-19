@@ -13,7 +13,7 @@ var explorerReviews = {
     this.initEvents();
   },
   initStyling: function() {
-    
+    this.render();
 
   },
   initEvents: function() {
@@ -29,6 +29,12 @@ var explorerReviews = {
     // $(".delete").on("click", this.removereviewData);
 
     
+  },
+
+  render: function($el, template, data) {
+    var tmpl = _.template(template, data);
+
+    $el.html(tmpl);
   },
 
   showHiking: function() {
@@ -84,18 +90,16 @@ getHikingReviews: function() {
       success: function(data, dataType, jqXHR) {
         console.log("YOU GOT IT NOW RETURN IT");
 
-          var reviewdata = data;
+          window.reviewdata = data;
           console.log(reviewdata);
 
-          var html = '';
+        
           for (var i = 0; i < reviewdata.length; i++){
             if(reviewdata[i].activityName== "Hiking") {
-          html += '<li>' + reviewdata[i].activityName + " - " + reviewdata[i].reviewerName + '</li>';
+            explorerReviews.render($(".container-previews"),Templates.reviews, reviewdata);
           }
-        }
-          console.log(html);
+        };
 
-         $(".parkpics").html(html);
 
       }
     });
