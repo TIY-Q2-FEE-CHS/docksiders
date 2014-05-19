@@ -83,7 +83,12 @@ function createMarker(latLng, placeResult) {
   }
  
   var marker = new google.maps.Marker(markerOptions);
-  var marker2 = new google.maps.Marker(markerOptions);
+  // var marker2 = new google.maps.Marker(markerOptions);
+
+  // var marker2 = new google.maps.Marker({
+  //       position:latlng3,
+  //       map:map,
+  //       icon: 'http://i41.tinypic.com/2yla5og.png'});
 
   if (placeResult) {
     // html = '';
@@ -94,7 +99,7 @@ function createMarker(latLng, placeResult) {
   }
   else {
     var content = "You are here: " + latLng.lat() + ", " + latLng.lng();
-    addInfoWindow(marker2, latLng, content);
+    addInfoWindow(marker, latLng, content);
   }
 
 }
