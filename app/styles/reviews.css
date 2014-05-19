@@ -1,9 +1,12 @@
 /*styles for the reviews page*/
-
+body{
+	background-color: #cbf7ff;
+}
 .preview-parks {
-    width:100%;
+    width:80%;
     height: 300px;
-    background-color: #c0caff;    
+    background-color: #c0caff;  
+    border: 1px solid black;  
 }
 
 .flex-container {
@@ -27,4 +30,18 @@ display: -webkit-flex;
 
 .container-previews {
 	list-style-type: none;
+}
+
+.parkpics{
+	width: 100%;
+	list-style-type: none;
+}
+
+.container-previews{
+	width: 80%;
+	background: #cbf7ff;
+}
+
+.reviewPage {
+	background: #cbf7ff;
 }
