@@ -1,4 +1,3 @@
-// Starting review js for CRUD Explorer Reviews
 $(document).ready(function() {
 
   explorerReviews.init();
@@ -25,8 +24,7 @@ var explorerReviews = {
     $(".fishingReviews").on("click", this.getFishingReviews);
     $(".picnicReviews").on("click", this.getPicnicReviews);
     $(".sightseeingReviews").on("click", this.getSightseeingReviews);
-    // $(".delete").on("click", this.removereviewData);
-
+    // $(".footer").on("click", ".deleter", this.removeReview);
     
   },
 
@@ -273,23 +271,24 @@ $.ajax({
 
 }
  
-};
-
-// removePost: function() {
-//     var $thisPost = $(this).closest("article")
-//     var postId = $thisPost.data("postid");
+// removeReview: function(e) {
+//   e.preventDefault();
+//     // var $thisPost = $(this).closest("article")
+//     // var postId = $thisPost.data("postid");
 //     $.ajax({
-//       url: "http://tiy-fee-rest.herokuapp.com/collections/myBlog/" + postId,
+//       url: "http://tiy-fee-rest.herokuapp.com/collections/explorerReviews/5379939d0ee8f2020000000c",
 //       type: "DELETE",
+//       dataType:"JSON",
 //       error: function(jqXHR, status, error) {
 //         alert("couldnt delete");
 //       }, 
 //       success: function(data) {
-//          myBlog.renderPosts();  
-//          myBlog.renderSideBar();
+//         console.log("got rid of that one");
+         
 //       }
 //     });
-//   },
+//   }
+};
 
 
 // stuff that i am working with
