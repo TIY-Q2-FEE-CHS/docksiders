@@ -87,6 +87,7 @@ getHikingReviews: function() {
       },
       success: function(data, dataType, jqXHR) {
           window.reviewdata = data;
+          var html= '';
           for (var i = 0; i < reviewdata.length; i++){
             if(reviewdata[i].activityName== "Hiking") {
           html += '<h3>'+ reviewdata[i].reviewerName + "</h3>" + "<p>" + reviewdata[i].reviewerComment + '</p>'+ "<br>";
